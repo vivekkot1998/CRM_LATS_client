@@ -5,7 +5,8 @@ import { Area, AreaConfig } from '@ant-design/plots'
 import { totalCountVariants } from '@/constants'
 
 type Props = {
-    resource: "clients" | "contacts" | "deals",
+    // resource: "clients" | "contacts" | "deals",
+    resource: "companies" | "contacts" | "deals",
     isLoading: boolean,
     totalCount?: number
 }

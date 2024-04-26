@@ -145,7 +145,7 @@ export const COMPANIES_LIST_QUERY = gql`
     companies {
       totalCount
       nodes {
-        _id
+        id
         name
         avatarUrl
         # Get the sum of all deals in this company

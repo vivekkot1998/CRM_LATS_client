@@ -18,8 +18,12 @@ const EditPage = () => {
         }
     });
 
+    console.log(queryResult);
+
     const { avatarUrl, name } = queryResult?.data?.data || {}
 
+    //console.log(name);
+    
     const { selectProps, queryResult: queryResultUsers } = useSelect<GetFieldsFromList<UsersSelectQuery>>({
         resource: 'users',
         optionLabel: 'name',
@@ -30,6 +34,9 @@ const EditPage = () => {
             gqlQuery: USERS_SELECT_QUERY
         }
     })
+
+    //console.log(queryResultUsers.data);
+    //console.log(selectProps);
     
   return (
     <div>
@@ -38,14 +45,18 @@ const EditPage = () => {
                 <Edit 
                 isLoading={formLoading}
                 saveButtonProps={saveButtonProps}
-                breadcrumb={false}>
+                breadcrumb={false}
+                >
 
                     <Form
                         {...formProps} layout='vertical'
                     >
                         <CustomAvatar shape='square' src={avatarUrl} name={getNameInitials(name || '')} style={{width: 96, height: 96, marginBottom: '24px' }}/>
-                        {/* <Form.Item
-                            label="Sales Owner"
+                        <Form.Item label="Client" name="name">
+                                <Input placeholder='name'  />       
+                                </Form.Item>
+                        <Form.Item
+                            label="Agent Name"
                             name="salesOwnerId"
                             initialValue={formProps?.initialValues?.salesOwner?.id}
                         >
@@ -64,9 +75,43 @@ const EditPage = () => {
                                 })) ?? []
                             }
                         />
-                        </Form.Item> */}
-                        <Form.Item label="Sales Owner" name="salesOwnerId">
-                            <Input placeholder='Sales Owner'/>
+                        </Form.Item>
+                        <Row>
+                            <Col>
+                                <Form.Item label="Address" name="address">
+                                <Input placeholder='Address'  />       
+                                </Form.Item>
+                            </Col>
+                            <Col>
+                                <Form.Item label="Address1" name="address1">
+                                <Input placeholder='Address'  />       
+                                </Form.Item>
+                            </Col>
+                            <Col>
+                                <Form.Item label="Address2" name="address2">
+                                <Input placeholder='Address'  />       
+                                </Form.Item>
+                            </Col>
+                        </Row>
+                        <Row> 
+                            <Col>
+                                <Form.Item label="City" name="city">
+                                <Input placeholder='City'  />       
+                                </Form.Item>
+                            </Col>
+                            <Col>
+                                <Form.Item label="Country" name="country">
+                                <Input placeholder='Country'  />       
+                                </Form.Item>
+                            </Col>
+                            <Col>
+                                <Form.Item label="Postcode" name="postcode">
+                                <Input placeholder='Postcode'  />       
+                                </Form.Item>
+                            </Col>
+                        </Row>
+                        <Form.Item label="Phone Number" name="phoneNumber">
+                            <Input placeholder='Phone Number'  />       
                         </Form.Item>
                     </Form>
                 </Edit>
@@ -74,6 +119,7 @@ const EditPage = () => {
             </Col>
         </Row>
     </div>
+    
   )
 }
 

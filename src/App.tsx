@@ -15,11 +15,14 @@ import routerBindings, {
 import { App as AntdApp } from "antd";
 import { createClient } from "graphql-ws";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
-import { ClientList, Home, Login } from "./pages";
+// import { ClientList, Home, Login } from "./pages";
+import { CompanyList, Home, Login } from "./pages";
 import Layout from "./components/layout";
 import { resources } from "./config/resources";
-import Create from "./pages/client/create";
-import EditPage from "./pages/client/edit";
+// import Create from "./pages/client/create";
+// import EditPage from "./pages/client/edit";
+import Create from "./pages/company/create";
+import EditPage from "./pages/company/edit";
 
 
 
@@ -72,8 +75,13 @@ function App() {
                     }  
                   >
                     <Route index element={<Home />} />
-                    <Route path="/clients">
+                    {/* <Route path="/clients">
                         <Route index element={ <ClientList/> }/>
+                        <Route path="new" element={ <Create />}/>
+                        <Route path="edit/:id" element={ <EditPage />}/>
+                    </Route> */}
+                     <Route path="/companies">
+                        <Route index element={ <CompanyList/> }/>
                         <Route path="new" element={ <Create />}/>
                         <Route path="edit/:id" element={ <EditPage />}/>
                     </Route>

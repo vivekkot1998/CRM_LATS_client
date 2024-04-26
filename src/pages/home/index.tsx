@@ -23,7 +23,8 @@ export const Home = () => {
           xl={8}
         >
           <DashboardTotalCountCard 
-          resource="clients"
+          // resource="clients"
+          resource="companies"
           isLoading={isLoading}
           totalCount={data?.data.companies.totalCount}
           />

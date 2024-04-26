@@ -11,11 +11,16 @@ export const resources: IResourceItem[] = [
         }
     },
     {
-        name: 'clients',
-        list: '/clients',
-        show: '/clients/:id',
-        create: '/clients/new',
-        edit: '/clients/edit/:id',
+        // name: 'clients',
+        // list: '/clients',
+        // show: '/clients/:id',
+        // create: '/clients/new',
+        // edit: '/clients/edit/:id',
+        name: 'companies',
+        list: '/companies',
+        show: '/companies/:id',
+        create: '/companies/new',
+        edit: '/companies/edit/:id',
         meta: {
             label: 'Clients',
             icon: <ShopOutlined />

@@ -21,27 +21,48 @@ export const UPDATE_USER_MUTATION = gql`
 export const CREATE_COMPANY_MUTATION = gql`
   mutation CreateCompany($input: CreateOneCompanyInput!) {
     createOneCompany(input: $input) {
-      _id
-      salesOwner {
-        id
-      }
+      id
+      # salesOwner {
+      #   id
+      # }
     }
   }
 `;
 
 // Mutation to update company details
+// export const UPDATE_COMPANY_MUTATION = gql`
+//   mutation UpdateCompany($input: UpdateOneCompanyInput!) {
+//     updateOneCompany(input: $input) {
+//       id
+//       name
+//       totalRevenue
+//       industry
+//       companySize
+//       businessType
+//       country
+//       website
+//       avatarUrl
+//       salesOwner {
+//         id
+//         name
+//         avatarUrl
+//       }
+//     }
+//   }
+// `;
 export const UPDATE_COMPANY_MUTATION = gql`
   mutation UpdateCompany($input: UpdateOneCompanyInput!) {
     updateOneCompany(input: $input) {
       id
       name
-      totalRevenue
-      industry
-      companySize
-      businessType
-      country
-      website
       avatarUrl
+      address
+      address1
+      address2
+      city
+      country
+      postcode
+      phoneNumber
       salesOwner {
         id
         name

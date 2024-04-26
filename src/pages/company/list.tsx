@@ -11,7 +11,8 @@ import { GetFieldsFromList } from "@refinedev/nestjs-query";
 import { Input, Space, Table } from "antd";
 
 
-export const ClientList = ({ children }: React.PropsWithChildren) => {
+// export const ClientList = ({ children }: React.PropsWithChildren) => {
+  export const CompanyList = ({ children }: React.PropsWithChildren) => {
   const go = useGo();
 
   const { tableProps, filters } = useTable<
@@ -66,7 +67,8 @@ export const ClientList = ({ children }: React.PropsWithChildren) => {
         onClick={() => {
           go({
             to: {
-              resource: 'clients',
+              // resource: 'clients',
+              resource: 'companies',
               action:'create'
             },
             options: {
@@ -87,7 +89,7 @@ export const ClientList = ({ children }: React.PropsWithChildren) => {
       <Table.Column<Company>
         dataIndex="name" 
         title="Name"
-        defaultFilteredValue={getDefaultFilter('_id', filters)}
+        defaultFilteredValue={getDefaultFilter('id', filters)}
         filterIcon={<SearchOutlined />}
         filterDropdown={(props) => (
           <FilterDropdown {...props}>
@@ -104,7 +106,7 @@ export const ClientList = ({ children }: React.PropsWithChildren) => {
         )}
         />
            <Table.Column<Company>
-              dataIndex="_id"
+              dataIndex="id"
               title="Actions"
               fixed="right"
               render={(value) => (

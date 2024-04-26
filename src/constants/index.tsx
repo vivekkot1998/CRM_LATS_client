@@ -28,7 +28,8 @@ import {
   Industry,
 } from "@/graphql/schema.types";
 
-export type TotalCountType = "clients" | "contacts" | "deals";
+// export type TotalCountType = "clients" | "contacts" | "deals";
+export type TotalCountType = "companies" | "contacts" | "deals";
 
 export const totalCountVariants: {
   [key in TotalCountType]: {
@@ -39,7 +40,8 @@ export const totalCountVariants: {
     data: { index: string; value: number }[];
   };
 } = {
-  clients: {
+  // clients:
+  companies: {
     primaryColor: "#1677FF",
     secondaryColor: "#BAE0FF",
     icon: (
@@ -52,7 +54,7 @@ export const totalCountVariants: {
         />
       </IconWrapper>
     ),
-    title: "Number of clients",
+    title: "Number of Clients",
     data: [
       {
         index: "1",

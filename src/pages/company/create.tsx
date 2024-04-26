@@ -1,4 +1,5 @@
-import { ClientList } from './list'
+// import { ClientList } from './list'
+import { CompanyList } from './list'
 import { Form, Input, Modal, Select } from 'antd'
 import { useModalForm, useSelect } from '@refinedev/antd'
 import { useGo } from '@refinedev/core'
@@ -15,7 +16,8 @@ const Create = () => {
 
     const goToListPage = () => {
         go({
-            to: { resource: 'clients', action: 'list' },
+            // to: { resource: 'clients', action: 'list' },
+            to: { resource: 'companies', action: 'list' },
             options: {keepQuery: true},
             type: 'replace', 
         })
@@ -45,7 +47,8 @@ const Create = () => {
 
     
   return (
-    <ClientList>
+    // <ClientList>
+    <CompanyList>
         <Modal
             {...modalProps}
             mask={true} //semi-green background
@@ -84,7 +87,8 @@ const Create = () => {
                 </Form.Item> */}
             </Form>
         </Modal>
-    </ClientList>
+    {/* </ClientList> */}
+    </CompanyList>
   )
 }
 
