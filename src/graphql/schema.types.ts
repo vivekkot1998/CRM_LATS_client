@@ -25,7 +25,7 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean };
   Int: { input: number; output: number };
   Float: { input: number; output: number };
-  DateTime: { input: string; output: string };
+  DateTime: { input: any; output: any };
 };
 
 export type Audit = {
@@ -4663,26 +4663,6 @@ export type User = {
   updatedBy?: Maybe<User>;
 };
 
-export type Agent = {
-  avatarUrl?: Maybe<Scalars["String"]["output"]>;
-  companies: UserCompaniesConnection;
-  contacts: UserContactsConnection;
-  createdAt: Scalars["DateTime"]["output"];
-  createdBy?: Maybe<User>;
-  deals: UserDealsConnection;
-  email: Scalars["String"]["output"];
-  events: UserEventsConnection;
-  id: Scalars["ID"]["output"];
-  jobTitle?: Maybe<Scalars["String"]["output"]>;
-  name: Scalars["String"]["output"];
-  phone?: Maybe<Scalars["String"]["output"]>;
-  role: Role;
-  tasks: UserTasksConnection;
-  timezone?: Maybe<Scalars["String"]["output"]>;
-  updatedAt: Scalars["DateTime"]["output"];
-  updatedBy?: Maybe<User>;
-};
-
 export type UserCompaniesArgs = {
   filter?: CompanyFilter;
   paging?: OffsetPaging;
@@ -4984,150 +4964,3 @@ export type UserUpdateInput = {
   role?: InputMaybe<Role>;
   timezone?: InputMaybe<Scalars["String"]["input"]>;
 };
-
-
-// export type Maybe<T> = T | null;
-
-// export type Query = {
-//     // audit: Audit;
-//     // audits: AuditConnection;
-//     // companies: CompanyConnection;
-//     // company: Company;
-//     // companyAggregate: Array<CompanyAggregateResponse>;
-//     // companyNote: CompanyNote;
-//     // companyNotes: CompanyNoteConnection;
-//     // contact: Contact;
-//     // contactNote: ContactNote;
-//     // contactNotes: ContactNoteConnection;
-//     // contacts: ContactConnection;
-//     // deal: Deal;
-//     // dealAggregate: Array<DealAggregateResponse>;
-//     // dealStage: DealStage;
-//     // dealStages: DealStageConnection;
-//      deals: DealConnection;
-//     // event: Event;
-//     // eventCategories: EventCategoryConnection;
-//     // eventCategory: EventCategory;
-//     // events: EventConnection;
-//     // me: User;
-//     // quote: Quote;
-//     // quotes: QuoteConnection;
-//     // task: Task;
-//     // taskAggregate: Array<TaskAggregateResponse>;
-//     // taskComment: TaskComment;
-//     // taskComments: TaskCommentConnection;
-//     // taskStage: TaskStage;
-//     // taskStageAggregate: Array<TaskStageAggregateResponse>;
-//     // taskStages: TaskStageConnection;
-//     // tasks: TaskConnection;
-//     // user: User;
-//     // users: UserConnection;
-//   };
-
-//   export type Scalars = {
-//     ID: { input: string; output: string };
-//     String: { input: string; output: string };
-//     Boolean: { input: boolean; output: boolean };
-//     Int: { input: number; output: number };
-//     Float: { input: number; output: number };
-//     DateTime: { input: string; output: string };
-//   };
-
-// export type OffsetPageInfo = {
-//     /** true if paging forward and there are more records. */
-//     hasNextPage?: Maybe<Scalars["Boolean"]["output"]>;
-//     /** true if paging backwards and there are more records. */
-//     hasPreviousPage?: Maybe<Scalars["Boolean"]["output"]>;
-//   };
-
-//   export type Company = {
-//     // avatarUrl?: Maybe<Scalars["String"]["output"]>;
-//     // businessType?: Maybe<BusinessType>;
-//     // companySize?: Maybe<CompanySize>;
-//     // contacts: CompanyContactsConnection;
-//     // contactsAggregate: Array<CompanyContactsAggregateResponse>;
-//     // country?: Maybe<Scalars["String"]["output"]>;
-//     // createdAt: Scalars["DateTime"]["output"];
-//     // createdBy: User;
-//     // deals: CompanyDealsConnection;
-//     // dealsAggregate: Array<CompanyDealsAggregateResponse>;
-//     // id: Scalars["ID"]["output"];
-//     // industry?: Maybe<Industry>;
-//     // name: Scalars["String"]["output"];
-//     // notes: CompanyNotesConnection;
-//     // notesAggregate: Array<CompanyNotesAggregateResponse>;
-//     // salesOwner: User;
-//     // totalRevenue?: Maybe<Scalars["Int"]["output"]>;
-//     // updatedAt: Scalars["DateTime"]["output"];
-//     // updatedBy?: Maybe<User>;
-//     // website?: Maybe<Scalars["String"]["output"]>;
-//   };
-
-//   export type Contact = {
-//     // avatarUrl?: Maybe<Scalars["String"]["output"]>;
-//     // company: Company;
-//     // createdAt: Scalars["DateTime"]["output"];
-//     // createdBy: User;
-//     // deals: ContactDealsConnection;
-//     // email: Scalars["String"]["output"];
-//     // id: Scalars["ID"]["output"];
-//     // jobTitle?: Maybe<Scalars["String"]["output"]>;
-//     // name: Scalars["String"]["output"];
-//     // notes: ContactNotesConnection;
-//     // phone?: Maybe<Scalars["String"]["output"]>;
-//     // salesOwner: User;
-//     // score?: Maybe<Scalars["Int"]["output"]>;
-//     // stage: ContactStage;
-//     // status: ContactStatus;
-//     // timezone?: Maybe<Scalars["String"]["output"]>;
-//     // updatedAt: Scalars["DateTime"]["output"];
-//     // updatedBy?: Maybe<User>;
-//   };
-
-//   export type Deal = {
-//     // closeDateDay?: Maybe<Scalars["Int"]["output"]>;
-//     // closeDateMonth?: Maybe<Scalars["Int"]["output"]>;
-//     // closeDateYear?: Maybe<Scalars["Int"]["output"]>;
-//     // company: Company;
-//     // companyId: Scalars["ID"]["output"];
-//     // createdAt: Scalars["DateTime"]["output"];
-//     // createdBy: User;
-//     // dealContact: Contact;
-//     // dealOwner: User;
-//     // dealOwnerId: Scalars["ID"]["output"];
-//     // id: Scalars["ID"]["output"];
-//     // notes: Scalars["String"]["output"];
-//     // stage?: Maybe<DealStage>;
-//     // stageId?: Maybe<Scalars["ID"]["output"]>;
-//     // title: Scalars["String"]["output"];
-//     // updatedAt: Scalars["DateTime"]["output"];
-//     // updatedBy?: Maybe<User>;
-//     // value?: Maybe<Scalars["Float"]["output"]>;
-//   };
-
-// export type CompanyConnection = {
-//       /** Array of nodes. */
-//       nodes: Array<Company>;
-//       /** Paging information */
-//       pageInfo: OffsetPageInfo;
-//       /** Fetch total count of records */
-//       totalCount: Scalars["Int"]["output"];
-//     };
-
-// export type ContactConnection = {
-//         /** Array of nodes. */
-//         nodes: Array<Contact>;
-//         /** Paging information */
-//         pageInfo: OffsetPageInfo;
-//         /** Fetch total count of records */
-//         totalCount: Scalars["Int"]["output"];
-//     };
-
-//     export type DealConnection = {
-//           /** Array of nodes. */
-//           nodes: Array<Deal>;
-//           /** Paging information */
-//           pageInfo: OffsetPageInfo;
-//           /** Fetch total count of records */
-//           totalCount: Scalars["Int"]["output"];
-//         };

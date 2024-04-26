@@ -8,6 +8,7 @@ import { Edit, useForm, useSelect } from '@refinedev/antd'
 import { GetFieldsFromList } from '@refinedev/nestjs-query';
 import { Col, Form, Input, Row, Select } from 'antd'
 import React from 'react'
+import { CompanyNotes } from './components';
 
 const EditPage = () => {
 
@@ -18,7 +19,7 @@ const EditPage = () => {
         }
     });
 
-    console.log(queryResult);
+    //console.log(queryResult);
 
     const { avatarUrl, name } = queryResult?.data?.data || {}
 
@@ -41,7 +42,7 @@ const EditPage = () => {
   return (
     <div>
         <Row gutter={[32, 32]}>
-            <Col xs={24} xl={12}>
+            <Col xs={24} xl={14}>
                 <Edit 
                 isLoading={formLoading}
                 saveButtonProps={saveButtonProps}
@@ -116,6 +117,13 @@ const EditPage = () => {
                     </Form>
                 </Edit>
 
+            </Col>
+            <Col xs={24} xl={10}>
+                <CompanyNotes
+                    style={{
+                    marginTop: 32,
+                    }}
+                />
             </Col>
         </Row>
     </div>

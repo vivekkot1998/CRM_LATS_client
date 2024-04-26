@@ -72,6 +72,26 @@ export const UPDATE_COMPANY_MUTATION = gql`
   }
 `;
 
+//Mutation to create a note in the company.
+export const COMPANY_CREATE_COMPANY_NOTE_MUTATION = gql`
+    mutation CompanyCreateCompanyNote($input: CreateOneCompanyNoteInput!) {
+        createOneCompanyNote(input: $input) {
+            id
+            note
+        }
+    }
+`;
+
+//Mutation to update one company note.
+export const COMPANY_UPDATE_COMPANY_NOTE_MUTATION = gql`
+    mutation CompanyUpdateCompanyNote($input: UpdateOneCompanyNoteInput!) {
+        updateOneCompanyNote(input: $input) {
+            id
+            note
+        }
+    }
+`;
+
 // Mutation to update task stage of a task
 export const UPDATE_TASK_STAGE_MUTATION = gql`
   mutation UpdateTaskStage($input: UpdateOneTaskInput!) {

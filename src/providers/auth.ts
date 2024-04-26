@@ -4,6 +4,7 @@ import { AuthBindings } from "@refinedev/core";
 // import { User } from "@/graphql/schema.types";
 
 import { API_URL, dataProvider } from "./data";
+import { User } from "@/graphql/schema.types";
 /**
  * For demo purposes and to make it easier to test the app, you can use the following credentials:
  */
@@ -156,11 +157,46 @@ export const authProvider: AuthBindings = {
       };
     }
   },
+  // getIdentity: async () => {
+  //   const accessToken = localStorage.getItem("access_token");
+
+  //   try {
+  //     const { data } = await dataProvider.custom<{ AgentIdentity: any; }>({
+  //       url: API_URL,
+  //       method: "post",
+  //       headers: accessToken
+  //         ? {
+  //           Authorization: `Bearer ${accessToken}`,
+  //         }
+  //         : {},
+  //       meta: {
+  //         rawQuery: `
+  //         query {
+  //           AgentIdentity{
+  //             userId
+  //             message
+  //             statusCode
+  //             name
+  //             email
+  //             phone
+  //             jobTitle
+  //             avatarUrl
+  //           }
+  //         }
+  //               `,
+  //       },
+  //     });
+
+  //     return data.AgentIdentity;
+  //   } catch (error) {
+  //     return undefined;
+  //   }
+  // },
   getIdentity: async () => {
     const accessToken = localStorage.getItem("access_token");
 
     try {
-      const { data } = await dataProvider.custom<{ AgentIdentity: any; }>({
+      const { data } = await dataProvider.custom<{  me: User }>({
         url: API_URL,
         method: "post",
         headers: accessToken
@@ -170,23 +206,18 @@ export const authProvider: AuthBindings = {
           : {},
         meta: {
           rawQuery: `
-          query {
-            AgentIdentity{
-              userId
-              message
-              statusCode
-              name
-              email
-              phone
-              jobTitle
-              avatarUrl
+          query Me {
+            me {
+                id,
+                name,
+                avatarUrl
             }
           }
-                `,
+        `,
         },
       });
 
-      return data.AgentIdentity;
+      return data.me;
     } catch (error) {
       return undefined;
     }

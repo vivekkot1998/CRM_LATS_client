@@ -191,6 +191,50 @@ export const USERS_SELECT_QUERY = gql`
 }
 `;
 
+//Query to get the company notes
+// export const COMPANY_COMPANY_NOTES_QUERY = gql`
+//     query CompanyCompanyNotes(
+//         $filter: CompanyNoteFilter!
+//         $sorting: [CompanyNoteSort!]
+//         $paging: OffsetPaging!
+//     ) {
+//         companyNotes(filter: $filter, sorting: $sorting, paging: $paging) {
+//             nodes {
+//                 id
+//                 note
+//                 createdAt
+//                 createdBy {
+//                     id
+//                     name
+//                     updatedAt
+//                     avatarUrl
+//                 }
+//             }
+//             totalCount
+//         }
+//     }
+// `;
+export const COMPANY_COMPANY_NOTES_QUERY = gql`
+    query CompanyCompanyNotes{
+        companyNotes{
+            totalCount
+            nodes {
+                id
+                note
+                createdBy{
+                    id
+                    name
+                    avatarUrl
+                }
+                company{
+                    id
+                    name
+                }
+            }        
+        }
+    }
+`;
+
 // Query to get contacts associated with a company
 export const COMPANY_CONTACTS_TABLE_QUERY = gql`
   query CompanyContactsTable(
