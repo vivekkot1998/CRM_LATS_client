@@ -215,8 +215,8 @@ export const USERS_SELECT_QUERY = gql`
 //     }
 // `;
 export const COMPANY_COMPANY_NOTES_QUERY = gql`
-    query CompanyCompanyNotes{
-        companyNotes{
+    query CompanyCompanyNotes($filter: CompanyNoteFilter){
+        companyNotes(filter: $filter){
             totalCount
             nodes {
                 id
@@ -234,6 +234,26 @@ export const COMPANY_COMPANY_NOTES_QUERY = gql`
         }
     }
 `;
+// export const COMPANY_COMPANY_NOTES_QUERY = gql`
+//     query CompanyCompanyNotes{
+//         companyNotes{
+//             totalCount
+//             nodes {
+//                 id
+//                 note
+//                 createdBy{
+//                     id
+//                     name
+//                     avatarUrl
+//                 }
+//                 company{
+//                     id
+//                     name
+//                 }
+//             }        
+//         }
+//     }
+// `;
 
 // Query to get contacts associated with a company
 export const COMPANY_CONTACTS_TABLE_QUERY = gql`
