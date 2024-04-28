@@ -33,12 +33,8 @@ export const DASHBORAD_CALENDAR_UPCOMING_EVENTS_QUERY = gql`
 
 // Query to get deals chart
 export const DASHBOARD_DEALS_CHART_QUERY = gql`
-  query DashboardDealsChart(
-    $filter: DealStageFilter!
-    $sorting: [DealStageSort!]
-    $paging: OffsetPaging
-  ) {
-    dealStages(filter: $filter, sorting: $sorting, paging: $paging) {
+  query DashboardDealsChart{
+    dealStages {
       # Get all deal stages
       nodes {
         id
@@ -58,6 +54,21 @@ export const DASHBOARD_DEALS_CHART_QUERY = gql`
       totalCount
     }
   }
+`;
+
+export const DASHBOARD_TOTAL_REVENUE_QUERY = gql`
+    query DashboardTotalRevenue{
+        dealStages {
+            nodes {
+                title
+                # dealsAggregate {
+                #     sum {
+                #         value
+                #     }
+                # }
+            }
+        }
+    }
 `;
 
 // Query to get latest activities deals
@@ -148,6 +159,11 @@ export const COMPANIES_LIST_QUERY = gql`
         id
         name
         avatarUrl
+        salesOwner {
+                    id
+                    name
+                    avatarUrl
+                }
         # Get the sum of all deals in this company
         # dealsAggregate {
         #   sum {
@@ -255,6 +271,71 @@ export const COMPANY_COMPANY_NOTES_QUERY = gql`
 //     }
 // `;
 
+//Query to get deals stages.
+export const SALES_DEAL_STAGES_QUERY = gql`
+    query SalesDealStages{
+        dealStages{
+            nodes {
+                id
+                title
+            }
+            totalCount
+        }
+    }
+`;
+
+//Query to get the deals.
+export const SALES_DEALS_QUERY = gql`
+    query SalesDeals{
+        deals{
+          totalCount
+            nodes {
+                id
+                title
+                value
+                createdAt
+                stageId
+                company {
+                    id
+                    name
+                    avatarUrl
+                }
+                dealOwner {
+                    id
+                    name
+                    avatarUrl
+                }
+            }
+        }
+    }
+`;
+
+//Query to update one deal
+export const SALES_UPDATE_DEAL_MUTATION = gql`
+    mutation SalesUpdateDeal($input: UpdateOneDealInput!) {
+        updateOneDeal(input: $input) {
+            id
+            title
+            stageId
+            value
+            dealOwnerId
+            company {
+                id
+                # contacts {
+                #     nodes {
+                #         id
+                #         name
+                #         avatarUrl
+                #     }
+                # }
+            }
+            # dealContact {
+            #     id
+            # }
+        }
+    }
+`;
+
 // Query to get contacts associated with a company
 export const COMPANY_CONTACTS_TABLE_QUERY = gql`
   query CompanyContactsTable(
@@ -276,6 +357,8 @@ export const COMPANY_CONTACTS_TABLE_QUERY = gql`
     }
   }
 `;
+
+
 
 // Query to get task stages list
 export const TASK_STAGES_QUERY = gql`
@@ -338,4 +421,23 @@ export const TASK_STAGES_SELECT_QUERY = gql`
       }
     }
   }
+`;
+
+export const SALES_COMPANIES_SELECT_QUERY = gql`
+    query SalesCompaniesSelect{
+        companies{
+            nodes {
+                id
+                name
+                avatarUrl
+                # contacts {
+                #     nodes {
+                #         name
+                #         id
+                #         avatarUrl
+                #     }
+                # }
+            }
+        }
+    }
 `;

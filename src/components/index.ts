@@ -7,11 +7,13 @@ import LatestActivitiesSkeleton from "./skeleton/latest-activities";
 import ProjectCardSkeleton from "./skeleton/project-card";
 import DashboardTotalCountCard from "./home/total-count-card";
 import LatestActivities from "./home/latest-activities";
+import { DashboardTotalRevenueChart } from "./home/total-revenue-chart";
 
 export * from "./icon";
 
 export {
     UpcomingEvents, 
+    DashboardTotalRevenueChart,
     DealsChart, 
     
     UpcomingEventsSkeleton, 
@@ -35,3 +37,4 @@ export {
 // export * from "./tasks/form/title";
 // export * from "./tasks/form/users";
 // export * from "./tasks/form/header";
+export * from "./select-option-with-avatar";

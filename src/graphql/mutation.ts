@@ -140,3 +140,23 @@ export const UPDATE_TASK_MUTATION = gql`
     }
   }
 `;
+
+export const SALES_CREATE_DEAL_STAGE_MUTATION = gql`
+    mutation SalesCreateDealStage($input: CreateOneDealStageInput!) {
+        createOneDealStage(input: $input) {
+            id
+        }
+    }
+`;
+
+export const SALES_FINALIZE_DEAL_MUTATION = gql`
+    mutation SalesFinalizeDeal($input: UpdateOneDealInput!) {
+        updateOneDeal(input: $input) {
+            id
+            # notes
+            # closeDateYear
+            # closeDateMonth
+            # closeDateDay
+        }
+    }
+`;

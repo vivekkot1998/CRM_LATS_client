@@ -1,14 +1,14 @@
 import CustomAvatar from "@/components/custom-avatar";
 import { Text } from "@/components/text";
-import { COMPANIES_LIST_QUERY } from "@/graphql/queries";
+import { COMPANIES_LIST_QUERY, USERS_SELECT_QUERY } from "@/graphql/queries";
 import { Company } from "@/graphql/schema.types";
-import { CompaniesListQuery } from "@/graphql/types";
+import { CompaniesListQuery, UsersSelectQuery } from "@/graphql/types";
 import { SearchOutlined } from "@ant-design/icons";
-import { CreateButton, DeleteButton, EditButton, FilterDropdown, List, useTable } from "@refinedev/antd"
+import { CreateButton, DeleteButton, EditButton, FilterDropdown, List, useSelect, useTable } from "@refinedev/antd"
 import { HttpError, getDefaultFilter, useGo } from "@refinedev/core";
 
 import { GetFieldsFromList } from "@refinedev/nestjs-query";
-import { Input, Space, Table } from "antd";
+import { Input, Select, Space, Table } from "antd";
 
 
 // export const ClientList = ({ children }: React.PropsWithChildren) => {
@@ -56,6 +56,17 @@ import { Input, Space, Table } from "antd";
   });
 
   //console.log(tableProps);
+
+  const { selectProps, queryResult: queryResultUsers } = useSelect<GetFieldsFromList<UsersSelectQuery>>({
+    resource: 'users',
+    optionLabel: 'name',
+    pagination: {
+        mode: 'off'
+    },
+    meta: {
+        gqlQuery: USERS_SELECT_QUERY
+    }
+})
   
   
   return (
@@ -105,17 +116,47 @@ import { Input, Space, Table } from "antd";
           </Space>
         )}
         />
-           <Table.Column<Company>
-              dataIndex="id"
-              title="Actions"
-              fixed="right"
-              render={(value) => (
-                <Space>
-                  <EditButton hideText size="small" recordItemId={value}/>
-                  <DeleteButton hideText size="small" recordItemId={value}/>
-                </Space>
-              )}
-           />
+        <Table.Column<Company>
+        dataIndex={["salesOwner", "id"]}
+        title="Sales Owner"
+        defaultFilteredValue={getDefaultFilter("salesOwner.id", filters)}
+        filterDropdown={(props) => ( //check again 
+          <FilterDropdown {...props}>
+            <Select
+              placeholder="Search Sales owner"
+              style={{ width: 220 }}
+              {...selectProps}
+            />
+          </FilterDropdown>
+        )}
+        render={(_, record) => {
+          const salesOwner = record.salesOwner;
+         // console.log(salesOwner);
+          return (
+            <Space>
+              <CustomAvatar name={salesOwner.name} src={salesOwner.avatarUrl} />
+              <Text
+                style={{
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {salesOwner.name}
+              </Text>
+            </Space>
+          );
+        }}
+      />
+      <Table.Column<Company>
+        dataIndex="id"
+        title="Actions"
+        fixed="right"
+        render={(value) => (
+          <Space>
+            <EditButton hideText size="small" recordItemId={value}/>
+            <DeleteButton hideText size="small" recordItemId={value}/>
+          </Space>
+        )}
+      />
     </Table>
    </List>
    {children}

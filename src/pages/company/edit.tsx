@@ -56,7 +56,10 @@ const EditPage = () => {
                         <Form.Item label="Client" name="name">
                                 <Input placeholder='name'  />       
                                 </Form.Item>
-                        <Form.Item
+                        <Form.Item label="Agent" name="salesOwnerId" initialValue={formProps?.initialValues?.salesOwner?.name}>
+                        <Input placeholder='name'  />       
+                        </Form.Item>
+                        {/* <Form.Item
                             label="Agent Name"
                             name="salesOwnerId"
                             initialValue={formProps?.initialValues?.salesOwner?.id}
@@ -76,7 +79,7 @@ const EditPage = () => {
                                 })) ?? []
                             }
                         />
-                        </Form.Item>
+                        </Form.Item> */}
                         <Row>
                             <Col>
                                 <Form.Item label="Address" name="address">

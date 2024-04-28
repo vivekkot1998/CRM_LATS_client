@@ -993,3 +993,15 @@ export type SalesDealsQuery = {
     >;
   };
 };
+
+export type CompaniesListQuery = {
+  companies: Pick<Types.CompanyConnection, "totalCount"> & {
+    nodes: Array<
+      Pick<Types.Company, "id" | "name" | "avatarUrl"> & {
+        dealsAggregate: Array<{
+          sum?: Types.Maybe<Pick<Types.CompanyDealsSumAggregate, "value">>;
+        }>;
+      }
+    >;
+  };
+};

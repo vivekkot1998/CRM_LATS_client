@@ -23,6 +23,11 @@ import { resources } from "./config/resources";
 // import EditPage from "./pages/client/edit";
 import Create from "./pages/company/create";
 import EditPage from "./pages/company/edit";
+import { SalesPage } from "./pages/scrumboard";
+import { SalesCreatePage } from "./pages/scrumboard/create";
+import { SalesEditPage } from "./pages/scrumboard/edit";
+import { SalesCreateStage } from "./pages/scrumboard/create-stage";
+import { SalesFinalizeDeal } from "./pages/scrumboard/finalize-deal";
 
 
 
@@ -84,6 +89,49 @@ function App() {
                         <Route index element={ <CompanyList/> }/>
                         <Route path="new" element={ <Create />}/>
                         <Route path="edit/:id" element={ <EditPage />}/>
+                    </Route>
+                    <Route path="/scrumboard" element={<Outlet />}>
+                      <Route
+                        path="sales"
+                        element={
+                          <SalesPage>
+                            <Outlet />
+                          </SalesPage>
+                        }
+                      >
+                        <Route
+                          path="create"
+                          element={
+                            <SalesCreatePage>
+                              <Outlet />
+                            </SalesCreatePage>
+                          }
+                        >
+                          {/* <Route
+                            path="company/create"
+                            element={<Create isOverModal />}
+                          /> */}
+                        </Route>
+                        <Route path="edit/:id" element={<SalesEditPage />} />
+                          {/* <Route
+                            path="company/create"
+                            element={<CompanyCreatePage isOverModal />}
+                          />
+                        </Route> */}
+                        {/* <Route path="edit/:id" element={<SalesEditPage />} /> */}
+                        <Route
+                          path="stages/create"
+                          element={<SalesCreateStage />}
+                        />
+                        {/* <Route
+                          path="stages/edit/:id"
+                          element={<SalesEditStage />}
+                        /> */}
+                        <Route
+                          path=":id/finalize"
+                          element={<SalesFinalizeDeal />}
+                        />
+                      </Route>
                     </Route>
                   </Route>
                 </Routes>

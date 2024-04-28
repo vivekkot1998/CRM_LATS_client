@@ -1,4 +1,4 @@
-import { DashboardTotalCountCard, DealsChart, LatestActivities, UpcomingEvents } from "@/components"
+import { DashboardTotalCountCard, DashboardTotalRevenueChart, DealsChart, LatestActivities, UpcomingEvents } from "@/components"
 import { DASHBOARD_TOTAL_COUNTS_QUERY } from "@/graphql/queries"
 import { DashboardTotalCountsQuery } from "@/graphql/types"
 import { useCustom } from "@refinedev/core"
@@ -35,21 +35,22 @@ export const Home = () => {
           xl={8}
         >
           <DashboardTotalCountCard 
+          resource="deals"
+          isLoading={isLoading}
+          totalCount={data?.data.deals.totalCount}
+          />
+          {/* <DashboardTotalCountCard 
           resource="contacts"
           isLoading={isLoading}
           totalCount={data?.data.contacts.totalCount}
-          />
+          /> */}
         </Col>
         <Col 
           xs={24}
           sm={24}
           xl={8}
         >
-          <DashboardTotalCountCard 
-          resource="deals"
-          isLoading={isLoading}
-          totalCount={data?.data.deals.totalCount}
-          />
+          
         </Col>
       </Row>
 
@@ -63,12 +64,13 @@ export const Home = () => {
         sm={24}
         xl={8}
         style={{
-          height: '460px'
+          height: '432px'
         }}
       >
-        <UpcomingEvents />
+        <DashboardTotalRevenueChart />
+        
         </Col>
-        {/* <Col
+        <Col
         xs={24}
         sm={24}
         xl={16}
@@ -76,8 +78,9 @@ export const Home = () => {
           height: '460px'
         }}
       >
-        <DealsChart />
-        </Col> */}
+        {/* <UpcomingEvents /> */}
+        {/* <DealsChart /> */}
+        </Col>
       </Row>
 
       {/* <Row
