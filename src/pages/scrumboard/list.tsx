@@ -63,11 +63,11 @@ export const SalesPage: FC<PropsWithChildren> = ({ children }) => {
           },
         ],
         filters: [
-          {
-            field: "createdAt",
-            operator: "gte",
-            value: lastMonth,
-          },
+          // {
+          //   field: "createdAt",
+          //   operator: "gte",
+          //   value: lastMonth,
+          // },
         ],
         queryOptions: {
           enabled: !!stages,

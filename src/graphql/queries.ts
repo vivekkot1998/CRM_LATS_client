@@ -286,8 +286,9 @@ export const SALES_DEAL_STAGES_QUERY = gql`
 
 //Query to get the deals.
 export const SALES_DEALS_QUERY = gql`
-    query SalesDeals{
-        deals{
+    query SalesDeals(
+        $filter: DealFilter!){
+        deals(filter: $filter){
           totalCount
             nodes {
                 id
@@ -331,6 +332,48 @@ export const SALES_UPDATE_DEAL_MUTATION = gql`
             }
             # dealContact {
             #     id
+            # }
+        }
+    }
+`;
+
+export const COMPANY_DEALS_TABLE_QUERY = gql`
+    query CompanyDealsTable(
+        $filter: DealFilter!){
+        deals(filter: $filter) {
+            nodes {
+                id
+                title
+                value
+                stage {
+                    id
+                    title
+                }
+                dealOwner {
+                    id
+                    name
+                    avatarUrl
+                }
+                # dealContact {
+                #     id
+                #     name
+                #     avatarUrl
+                # }
+            }
+            totalCount
+        }
+    }
+`;
+
+export const COMPANY_TOTAL_DEALS_AMOUNT_QUERY = gql`
+    query CompanyTotalDealsAmount($id: ID!) {
+        company(id: $id) {
+            id
+            name
+            # dealsAggregate {
+            #     sum {
+            #         value
+            #     }
             # }
         }
     }

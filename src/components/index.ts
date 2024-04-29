@@ -11,6 +11,7 @@ import { DashboardTotalRevenueChart } from "./home/total-revenue-chart";
 
 export * from "./icon";
 
+export * from "./participants";
 export {
     UpcomingEvents, 
     DashboardTotalRevenueChart,

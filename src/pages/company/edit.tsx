@@ -8,7 +8,7 @@ import { Edit, useForm, useSelect } from '@refinedev/antd'
 import { GetFieldsFromList } from '@refinedev/nestjs-query';
 import { Col, Form, Input, Row, Select } from 'antd'
 import React from 'react'
-import { CompanyNotes } from './components';
+import { CompanyDealsTable, CompanyNotes } from './components';
 
 const EditPage = () => {
 
@@ -119,7 +119,11 @@ const EditPage = () => {
                         </Form.Item>
                     </Form>
                 </Edit>
-
+                <CompanyDealsTable
+            style={{
+              marginTop: 32,
+            }}
+          />
             </Col>
             <Col xs={24} xl={10}>
                 <CompanyNotes
