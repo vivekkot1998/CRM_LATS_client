@@ -50,7 +50,7 @@ const InvoiceModal: React.FC<InvoiceModalProps> = ({ isVisible, onClose }) => {
         </Button>,
       ]}
     >
-      <div>This is the invoice modal content.</div>
+      <div>This is the invoice content.</div>
     </Modal>
 
 //     <div className={styles.container}>
