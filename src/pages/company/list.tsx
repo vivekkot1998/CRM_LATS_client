@@ -104,7 +104,7 @@ import { Input, Select, Space, Table } from "antd";
         filterIcon={<SearchOutlined />}
         filterDropdown={(props) => (
           <FilterDropdown {...props}>
-            <Input placeholder="Search Client"/>
+            <Input placeholder="Search Customer"/>
           </FilterDropdown>
         )}
         render={(value, record) => (

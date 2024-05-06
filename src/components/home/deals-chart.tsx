@@ -43,7 +43,7 @@ const DealsChart = () => {
       tickCount: 4,
       label: {
         formatter: (v: string) =>{
-          return `₹${Number(v) /1000}K`
+          return `£${Number(v) /1000}K`
         }
       }
     },
@@ -51,7 +51,7 @@ const DealsChart = () => {
       formatter: (data) => {
         return{
           name: data.state,
-          value: `₹${Number(data.value) / 1000}K`
+          value: `£${Number(data.value) / 1000}K`
         }
       }
     }

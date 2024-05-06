@@ -577,7 +577,7 @@ export const CompanyNoteList = () => {
               >
                 <Text style={{ fontWeight: 500 }}>{item.createdBy.name}</Text>
                 <Text size="xs" style={{ color: "#000000a6" }}>
-                  {/* {dayjs(item.createdAt).format("MMMM D, YYYY - h:ma")} */}
+                  {dayjs(item.createdAt).format("MMMM D, YYYY - h:ma")}
                 </Text>
               </div>
 

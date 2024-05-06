@@ -74,8 +74,8 @@ export const DashboardTotalRevenueChart: React.FC = () => {
 //     (prev, curr) => prev + (curr?.dealsAggregate?.[0]?.sum?.value ?? 0),
 //     0,
 //   );
-    const totalRealizationRevenue = 225339;
-    const totalExpectedRevenue = 963950;
+    const totalRealizationRevenue = 2000;
+    const totalExpectedRevenue = 10000;
   const realizationPercentageOfExpected =
     totalRealizationRevenue && totalExpectedRevenue
       ? (totalRealizationRevenue / totalExpectedRevenue) * 100

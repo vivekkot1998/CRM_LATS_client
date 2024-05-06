@@ -39,18 +39,17 @@ export const Home = () => {
           isLoading={isLoading}
           totalCount={data?.data.deals.totalCount}
           />
-          {/* <DashboardTotalCountCard 
-          resource="contacts"
-          isLoading={isLoading}
-          totalCount={data?.data.contacts.totalCount}
-          /> */}
         </Col>
         <Col 
           xs={24}
           sm={24}
           xl={8}
         >
-          
+          {/* <DashboardTotalCountCard 
+          resource="contacts"
+          isLoading={isLoading}
+          totalCount={data?.data.contacts.totalCount}
+          /> */}
         </Col>
       </Row>
 

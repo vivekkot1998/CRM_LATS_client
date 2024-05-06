@@ -54,7 +54,7 @@ export const totalCountVariants: {
         />
       </IconWrapper>
     ),
-    title: "Number of Clients",
+    title: "Number of Customers",
     data: [
       {
         index: "1",

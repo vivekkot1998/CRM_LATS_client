@@ -228,7 +228,7 @@ export const SalesCreatePage: FC<PropsWithChildren> = ({ children }) => {
             <Input placeholder="Please enter deal title" />
           </Form.Item>
           <Form.Item
-            label="Client"
+            label="Customer"
             name="companyId"
             rules={[{ required: true }]}
             // extra={
@@ -243,7 +243,7 @@ export const SalesCreatePage: FC<PropsWithChildren> = ({ children }) => {
             // }
           >
             <Select
-              placeholder="Please select client"
+              placeholder="Please select customers"
               {...selectProps}
               options={
                 queryResult.data?.data?.map((company) => ({

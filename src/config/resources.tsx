@@ -22,7 +22,7 @@ export const resources: IResourceItem[] = [
         create: '/companies/new',
         edit: '/companies/edit/:id',
         meta: {
-            label: 'Clients',
+            label: 'Customers',
             icon: <ShopOutlined />
         }
         
